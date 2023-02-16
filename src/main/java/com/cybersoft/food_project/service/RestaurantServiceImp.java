@@ -133,7 +133,6 @@ public class RestaurantServiceImp implements RestaurantService{
             restaurantDetailDTO = gson.fromJson(data, RestaurantDetailDTO.class );
             return  restaurantDetailDTO;
         }
-
         // Optional: Có hoặc không có cũng được( dữ liệu có thể bị null)
         Optional<RestaurantEntity> restaurant = restaurantRepository.findById(id);
 

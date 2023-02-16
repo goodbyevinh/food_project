@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.xml.crypto.Data;
 
 @RestController
+@CrossOrigin
 @RequestMapping("user")
 public class UserController {
     @Autowired

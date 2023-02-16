@@ -5,6 +5,7 @@ public class FoodModel {
     private String name;
     private String image;
     private int price;
+    private int quantity;
 
     public int getId() {
         return id;
@@ -36,5 +37,13 @@ public class FoodModel {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

@@ -19,6 +19,7 @@ import java.util.Map;
 import java.util.Set;
 
 @RestController
+@CrossOrigin
 @RequestMapping("food")
 public class FoodController {
 
