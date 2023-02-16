@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/file")
 public class FileUploadController {
     @Autowired

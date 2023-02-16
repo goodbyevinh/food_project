@@ -13,8 +13,8 @@ public class FoodOrderEntity {
     private int idOrder;
     @Column(name = "price")
     private float price;
-    @Column(name = "quality")
-    private int quality;
+    @Column(name = "quantity")
+    private int quantity;
     @ManyToOne
     @JoinColumn(name = "id_food" , insertable = false, updatable = false)
     private FoodEntity food;
@@ -46,12 +46,13 @@ public class FoodOrderEntity {
         this.price = price;
     }
 
-    public int getQuality() {
-        return quality;
+
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setQuality(int quality) {
-        this.quality = quality;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public FoodEntity getFood() {

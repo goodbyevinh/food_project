@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/refresh-token")
 public class RefreshTokenController {
 

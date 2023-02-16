@@ -21,6 +21,10 @@ public interface OrderRepository extends JpaRepository<OrderEntity, Integer> {
             "join order_status as os on o.id = os.order.id " +
             "where u.email = ?1 and ((os.current = true and os.idStatus = 3) or (os.current = true and os.idStatus = 4))")
     List<OrderEntity> findOrderEntitiesByPrevious(String email);
+    @Query(value = "select o from t_order as o join user as u on o.user.id = u.id " +
+            "where u.email = ?1 and o.cart = true")
+    OrderEntity findOrderEntitiesByCart(String email);
+
     OrderEntity findOrderEntityById(int id);
 
 }

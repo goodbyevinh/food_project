@@ -16,16 +16,16 @@ public class OrderEntity {
     private String deliverAddress;
     @Column(name = "fee")
     private float fee;
+    @Column(name = "cart")
+    private boolean cart;
 
     @ManyToOne
     @JoinColumn(name = "id_user")
     private UserEntity user;
-    @ManyToOne
-    @JoinColumn(name = "id_restaurant")
-    private RestaurantEntity restaurant;
+
     @OneToMany(mappedBy = "order")
     private Set<OrderStatusEntity> orderStatuses;
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<FoodOrderEntity> foodOrders;
 
     public int getId() {
@@ -84,11 +84,11 @@ public class OrderEntity {
         this.foodOrders = foodOrders;
     }
 
-    public RestaurantEntity getRestaurant() {
-        return restaurant;
+    public boolean isCart() {
+        return cart;
     }
 
-    public void setRestaurant(RestaurantEntity restaurant) {
-        this.restaurant = restaurant;
+    public void setCart(boolean cart) {
+        this.cart = cart;
     }
 }

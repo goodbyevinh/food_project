@@ -36,7 +36,7 @@ import javax.xml.crypto.Data;
 import java.time.Duration;
 
 @RestController
-//@CrossOrigin // cho phép những domain khác với domain của api truy cập vào
+@CrossOrigin
 @RequestMapping("/auth")
 public class AuthController {
     @Autowired
@@ -90,14 +90,14 @@ public class AuthController {
         dataResponse.setData(dataTokenResponse);
         dataResponse.setSuccess(true);
 
-        ResponseCookie cookie = ResponseCookie.from("refreshToken", dataTokenResponse.getFreshToken()) // key & value
-                .httpOnly(true)
-                .secure(true)
-                .path("/api/refresh-token")
-                .maxAge(Duration.ofHours(1))
-                .sameSite("None")
-                .build();
-        response.setHeader(HttpHeaders.SET_COOKIE, cookie.toString());
+//        ResponseCookie cookie = ResponseCookie.from("refreshToken", dataTokenResponse.getFreshToken()) // key & value
+//                .httpOnly(true)
+//                .secure(true)
+//                .path("/api/refresh-token")
+//                .maxAge(Duration.ofHours(1))
+//                .sameSite("None")
+//                .build();
+//        response.setHeader(HttpHeaders.SET_COOKIE, cookie.toString());
         return new ResponseEntity<>(dataResponse , HttpStatus.OK);
     }
 
@@ -129,14 +129,14 @@ public class AuthController {
             dataResponse.setSuccess(isSuccess);
             dataResponse.setData(dataTokenResponse);
 
-            ResponseCookie cookie = ResponseCookie.from("refreshToken", dataTokenResponse.getFreshToken()) // key & value
-                    .httpOnly(true)
-                    .secure(true)
-                    .path("/api/refresh-token")
-                    .maxAge(Duration.ofHours(1))
-                    .sameSite("None")
-                    .build();
-            response.setHeader(HttpHeaders.SET_COOKIE, cookie.toString());
+//            ResponseCookie cookie = ResponseCookie.from("refreshToken", dataTokenResponse.getFreshToken()) // key & value
+//                    .httpOnly(true)
+//                    .secure(true)
+//                    .path("/api/refresh-token")
+//                    .maxAge(Duration.ofHours(1))
+//                    .sameSite("None")
+//                    .build();
+//            response.setHeader(HttpHeaders.SET_COOKIE, cookie.toString());
         }  else {
             dataResponse.setDesc("SignUp fail");
             dataResponse.setStatus(HttpStatus.OK.value());
@@ -161,23 +161,5 @@ public class AuthController {
             throw new DevineZeroException(e.getMessage());
         }
         return "hello";
-    }
-    @GetMapping("/cookie")
-    public ResponseEntity<?> testCookie(HttpServletResponse response) {
-        // create a cookie
-        Cookie cookie = new Cookie("platform","mobile");
-
-        // expires in 7 days
-        cookie.setMaxAge(1 * 60 * 60);
-
-        // optional properties
-        cookie.setSecure(true);
-        cookie.setHttpOnly(true);
-        cookie.setPath("/");
-
-        // add cookie to response
-        response.addCookie(cookie);
-        DataResponse dataResponse = new DataResponse();
-        return new ResponseEntity<>(dataResponse, HttpStatus.OK);
     }
 }

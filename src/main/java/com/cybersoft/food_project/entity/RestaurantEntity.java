@@ -16,6 +16,8 @@ public class RestaurantEntity {
     private String description;
     @Column(name = "category")
     private String category;
+    @Column(name = "fee")
+    private float fee;
 
     @OneToMany(mappedBy = "restaurant")
     private Set<RestaurantReviewEntity> restaurantReviews;
@@ -24,8 +26,7 @@ public class RestaurantEntity {
     private Set<FoodEntity> foods;
     @OneToMany(mappedBy = "restaurant")
     private Set<BookmarkRestaurantEntity> bookmarkRestaurants;
-    @OneToMany(mappedBy = "restaurant")
-    private Set<OrderEntity> orders;
+
 
     public int getId() {
         return id;
@@ -75,14 +76,6 @@ public class RestaurantEntity {
         this.bookmarkRestaurants = bookmarkRestaurants;
     }
 
-    public Set<OrderEntity> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(Set<OrderEntity> orders) {
-        this.orders = orders;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -98,4 +91,13 @@ public class RestaurantEntity {
     public void setCategory(String category) {
         this.category = category;
     }
+
+    public float getFee() {
+        return fee;
+    }
+
+    public void setFee(float fee) {
+        this.fee = fee;
+    }
+
 }
